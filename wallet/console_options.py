@@ -1,7 +1,10 @@
 from controllers.user_controller import UserController
 from controllers.transaction_controller import TransactionController
 from controllers.currency_controller import CurrencyController
+from controllers.trigger_controller import TriggerController
 from constants.transaction_constants import TransactionConstants
+from constants.trigger_constants import TriggerConstants
+
 
 user_controller = UserController()
 transaction_controller = TransactionController()
@@ -94,17 +97,17 @@ def option_user_movement():
         print(f'[{currency}]')
 
     transaction_currency = input('Choose currency: ')
-    
+
     print('Choose debit or credit:')
     print('1: CREDIT')
     print('2: DEBIT')
-    
+
     try:
         transaction_type = int(input('Type 1 or 2: '))
     except ValueError:
         print("The amount must be a number")
         return
-    
+
     if transaction_type == 1:
         transaction_type = TransactionConstants.CREDIT
     elif transaction_type == 2:
@@ -122,7 +125,7 @@ def option_user_movement():
         return
     try:
         TransactionController().create_transaction(user_name, transaction_description,
-                                               amount, transaction_type, transaction_currency)
+                                                   amount, transaction_type, transaction_currency)
     except Exception as e:
         print(e)
 
@@ -132,3 +135,27 @@ def option_list_users():
 
     for user in users:
         print(user)
+
+
+def option_triggers():
+    print("Create a new trigger")
+    print("")
+    
+    name = input("Trigger name: ")
+    
+    try:
+        amount = int(input(f'Amount that will execute the trigger: '))
+    except ValueError:
+        print("The amount must be a number")    
+    
+    print("Choose trigger action:")
+    print("[1] Notify Tax Authority") # Hardcoded - should be dynamic
+    
+    try:
+        action = int(input('Type action number: '))
+    except ValueError:
+        print("The trigger action must be a number")
+        return
+    
+    TriggerController().create_trigger(name, amount, action)
+    

@@ -20,6 +20,7 @@ def menu():
     print("Press 2 to list users.")
     print("Press 3 to view user account.")
     print("Press 4 to make a deposit or withdrawal.")
+    print("Press 5 to create an alert trigger.")
 
 
 def option_action(option: int):
@@ -31,6 +32,8 @@ def option_action(option: int):
         option_user_historic()
     elif (option == 4):
         option_user_movement()
+    elif (option == 5):
+        option_triggers()
 
 
 def prompt():

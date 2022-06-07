@@ -1,7 +1,7 @@
 from database.connection import Database
 
 
-class AlertTrigger(Database):
+class Trigger(Database):
     name: str = None
     amount: int = None
     action: int = None
