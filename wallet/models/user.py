@@ -2,12 +2,12 @@ from database.connection import Database
 
 
 class User(Database):
-    name = None
+    name: str = None
 
     def __init__(self):
         super().__init__(type(self).__name__)
 
-    def findByName(self, name):
+    def findByName(self, name: str):
         return super().search('name', name)
 
     def save(self):
@@ -15,5 +15,3 @@ class User(Database):
 
         if (user_search == None):
             super().create(self)
-        # else:
-        #     super().update(self)

@@ -18,6 +18,8 @@ def menu():
     print("Press 0 to exit.")
     print("Press 1 to create a new user.")
     print("Press 2 to list users.")
+    print("Press 3 to view user account.")
+    print("Press 4 to make a deposit or withdrawal.")
 
 
 def option_action(option: int):
@@ -25,11 +27,16 @@ def option_action(option: int):
         option_new_user()
     elif (option == 2):
         option_list_users()
+    elif (option == 3):
+        option_user_historic()
+    elif (option == 4):
+        option_user_movement()
 
 
 def prompt():
+    clear_console()
     set_currencies()
-    
+
     option_selected = None
 
     while option_selected != 0:
